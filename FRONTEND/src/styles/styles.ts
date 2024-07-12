@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-const leafGreen = '#228B22'; // Cor verde folha
-const woodBrown = '#8B4513'; // Cor marrom madeira
-const buttonText = '#FFFFFF'; // Cor do texto dos botões em branco
-const background = '#F0FFF0'; // Cor de fundo mais clara
-const darkText = '#2E8B57'; // Cor de texto mais escura para contraste
+const leafGreen = '#228B22'; 
+const woodBrown = '#8B4513'; 
+const buttonText = '#FFFFFF'; 
+const background = '#F0FFF0'; 
+const darkText = '#2E8B57';
 
 export default StyleSheet.create({
   container: {
@@ -12,13 +12,13 @@ export default StyleSheet.create({
     backgroundColor: background,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 0,
+    padding: 20,
   },
   header: {
     width: '100%',
     padding: 15,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: leafGreen,
     position: 'absolute',
@@ -39,9 +39,11 @@ export default StyleSheet.create({
     marginTop: 70,
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 16,
     color: darkText,
-    marginBottom: 20,
+    textAlign: 'center',
+    marginVertical: 10,
+    paddingHorizontal: 20,
   },
   button: {
     backgroundColor: woodBrown,
@@ -74,5 +76,37 @@ export default StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
     marginVertical: 20,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    padding: 10,
+    borderBottomColor: '#ccc',
+    borderBottomWidth: 1,
+  },
+  itemText: {
+    fontSize: 18,
+  },
+  itemButtons: {
+    flexDirection: 'row',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '80%',
+    marginBottom: 12,
+  },
+  scrollButton: {
+    backgroundColor: leafGreen,
+    padding: 10,
+    marginVertical: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  scrollButtonText: {
+    color: buttonText,
+    fontSize: 16,
   },
 });
