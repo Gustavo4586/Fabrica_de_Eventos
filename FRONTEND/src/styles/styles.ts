@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-const leafGreen = '#228B22'; // Cor verde folha
-const woodBrown = '#8B4513'; // Cor marrom madeira
-const buttonText = '#FFFFFF'; // Cor do texto dos botões em branco
-const background = '#F0FFF0'; // Cor de fundo mais clara
-const darkText = '#2E8B57'; // Cor de texto mais escura para contraste
+const leafGreen = '#228B22'; // verde 
+const woodBrown = '#8B4513'; // marrom 
+const buttonText = '#FFFFFF'; // branco
+const background = '#F0FFF0'; 
+const darkText = '#2E8B57'; 
 
 export default StyleSheet.create({
   container: {

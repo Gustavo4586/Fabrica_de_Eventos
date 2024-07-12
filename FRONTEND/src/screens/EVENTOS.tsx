@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList, Alert, TouchableOpacity } from 'react-native';
+import axios from 'axios';
+
+const API_URL = 'http://localhost:5000/api/events';
 
 interface Event {
   id: string;
@@ -13,36 +16,57 @@ export default function EVENTOS() {
   const [date, setDate] = useState('');
   const [editingEvent, setEditingEvent] = useState<Event | null>(null);
 
-  const addEvent = () => {
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get(API_URL);
+      setEvents(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addEvent = async () => {
     if (!name || !date) return;
 
-    const newEvent: Event = {
-      id: Math.random().toString(),
-      name,
-      date,
-    };
-
-    setEvents((prevEvents) => [...prevEvents, newEvent]);
-    setName('');
-    setDate('');
+    try {
+      const response = await axios.post(API_URL, { name, date });
+      setEvents((prevEvents) => [...prevEvents, response.data]);
+      setName('');
+      setDate('');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const updateEvent = () => {
+  const updateEvent = async () => {
     if (!name || !date || !editingEvent) return;
 
-    setEvents((prevEvents) =>
-      prevEvents.map((event) =>
-        event.id === editingEvent.id ? { ...event, name, date } : event
-      )
-    );
-
-    setEditingEvent(null);
-    setName('');
-    setDate('');
+    try {
+      const response = await axios.put(`${API_URL}/${editingEvent.id}`, { name, date });
+      setEvents((prevEvents) =>
+        prevEvents.map((event) =>
+          event.id === editingEvent.id ? response.data : event
+        )
+      );
+      setEditingEvent(null);
+      setName('');
+      setDate('');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const deleteEvent = (id: string) => {
-    setEvents((prevEvents) => prevEvents.filter((event) => event.id !== id));
+  const deleteEvent = async (id: string) => {
+    try {
+      await axios.delete(`${API_URL}/${id}`);
+      setEvents((prevEvents) => prevEvents.filter((event) => event.id !== id));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const startEditing = (event: Event) => {
@@ -83,9 +107,9 @@ export default function EVENTOS() {
         )}
         <FlatList
           data={events}
-          keyExtractor={(event) => event.id}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <View style={styles.itemContainer}>
+            <View style={styles.itemContainer} key={item.id}>
               <Text style={styles.itemText}>{item.name}</Text>
               <Text style={styles.itemText}>{item.date}</Text>
               <View style={styles.itemButtons}>
