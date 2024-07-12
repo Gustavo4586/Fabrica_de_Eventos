@@ -34,8 +34,6 @@ export default function Home() {
       <View style={globalStyles.header}>
         <Text style={globalStyles.headerText}>FÁBRICA DE EVENTOS</Text>
       </View>
-      
-      <Image source={require('../assets/environment.png')} style={globalStyles.image} />
       <Text style={globalStyles.mainTitle}>DIVERSÃO, ALEGIA, E OUSADIA É SÓ NA FABRICA</Text>
       <Text style={globalStyles.subtitle}>
         Nosso projeto é um site gratuito para marcar eventos de consciência ambiental, desde coleta de lixo, protestos contra emissão de carbono, dias de sair de casa de bicicleta, até encontros para discutir preservação ambiental e muito mais.
