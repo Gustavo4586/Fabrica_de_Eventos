@@ -29,14 +29,11 @@ export default function Home() {
     <View style={globalStyles.container}>
       {/* Header */}
       <View style={globalStyles.header}>
-        <Text style={globalStyles.headerText}>Bem Vindo a PINTU</Text>
-        <TouchableOpacity>
-          <Text style={globalStyles.headerText}>🔔</Text>
-        </TouchableOpacity>
+        <Text style={globalStyles.headerText}>FÁBRICA DE EVENTOS</Text>
       </View>
 
       {/* Main Title */}
-      <Text style={globalStyles.mainTitle}>Pessoas Inspirando as Novas Tendências Universais</Text>
+      <Text style={globalStyles.mainTitle}>DIVERSÃO, ALEGIA, E OUSADIA É SÓ NA FABRICA</Text>
 
 
       {/* Botões de Login e Cadastro */}
