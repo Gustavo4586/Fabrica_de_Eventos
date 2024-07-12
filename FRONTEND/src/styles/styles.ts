@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-const leafGreen = '#228B22'; 
-const woodBrown = '#8B4513'; 
-const buttonText = '#FFFFFF'; 
-const background = '#F0FFF0'; 
-const darkText = '#2E8B57';
+const leafGreen = '#228B22'; // Cor verde folha
+const woodBrown = '#8B4513'; // Cor marrom madeira
+const buttonText = '#FFFFFF'; // Cor do texto dos botões em branco
+const background = '#F0FFF0'; // Cor de fundo mais clara
+const darkText = '#2E8B57'; // Cor de texto mais escura para contraste
 
 export default StyleSheet.create({
   container: {
@@ -45,6 +45,32 @@ export default StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal: 20,
   },
+  section: {
+    width: '100%',
+    marginVertical: 10,
+    padding: 20,
+    backgroundColor: '#E0FFE0',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: leafGreen,
+    marginBottom: 10,
+  },
+  sectionText: {
+    fontSize: 16,
+    color: darkText,
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  listItem: {
+    fontSize: 16,
+    color: darkText,
+    textAlign: 'left',
+    marginVertical: 2,
+  },
   button: {
     backgroundColor: woodBrown,
     padding: 15,
@@ -57,46 +83,6 @@ export default StyleSheet.create({
     color: buttonText,
     fontSize: 18,
     textAlign: 'center',
-  },
-  linkText: {
-    color: leafGreen,
-    fontSize: 16,
-    textDecorationLine: 'underline',
-  },
-  input: {
-    backgroundColor: '#DCDCDC',
-    color: darkText,
-    padding: 10,
-    borderRadius: 5,
-    marginVertical: 10,
-    width: '80%',
-  },
-  image: {
-    width: '100%',
-    height: 200,
-    resizeMode: 'contain',
-    marginVertical: 20,
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    padding: 10,
-    borderBottomColor: '#ccc',
-    borderBottomWidth: 1,
-  },
-  itemText: {
-    fontSize: 18,
-  },
-  itemButtons: {
-    flexDirection: 'row',
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '80%',
-    marginBottom: 12,
   },
   scrollButton: {
     backgroundColor: leafGreen,

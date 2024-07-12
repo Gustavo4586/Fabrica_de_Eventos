@@ -8,7 +8,7 @@ interface Event {
   date: string;
 }
 
-export default function CrudScreen() {
+export default function EVENTOS() {
   const [events, setEvents] = useState<Event[]>([]);
   const [name, setName] = useState('');
   const [date, setDate] = useState('');

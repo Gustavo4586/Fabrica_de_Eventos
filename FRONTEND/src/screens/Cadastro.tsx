@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
+import globalStyles from '../styles/styles';
 
 export default function Cadastro() {
   const [name, setName] = useState('');
@@ -29,23 +30,23 @@ export default function Cadastro() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Cadastro</Text>
+    <View style={globalStyles.container}>
+      <Text style={globalStyles.mainTitle}>Cadastro</Text>
       <TextInput
-        style={styles.input}
+        style={globalStyles.input}
         placeholder="Nome"
         value={name}
         onChangeText={setName}
       />
       <TextInput
-        style={styles.input}
+        style={globalStyles.input}
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"
       />
       <TextInput
-        style={styles.input}
+        style={globalStyles.input}
         placeholder="Senha"
         value={password}
         onChangeText={setPassword}
@@ -55,26 +56,3 @@ export default function Cadastro() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  input: {
-    width: '100%',
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    marginBottom: 12,
-    paddingHorizontal: 10,
-  },
-});
