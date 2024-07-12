@@ -1,81 +1,96 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList, Alert, TouchableOpacity } from 'react-native';
+import globalStyles from '../styles/styles';
 
-interface Item {
+interface Event {
   id: string;
   name: string;
+  date: string;
 }
 
 export default function CrudScreen() {
-  const [items, setItems] = useState<Item[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [name, setName] = useState('');
-  const [editingItem, setEditingItem] = useState<Item | null>(null);
+  const [date, setDate] = useState('');
+  const [editingEvent, setEditingEvent] = useState<Event | null>(null);
 
-  const addItem = () => {
-    if (!name) return;
+  const addEvent = () => {
+    if (!name || !date) return;
 
-    const newItem: Item = {
+    const newEvent: Event = {
       id: Math.random().toString(),
       name,
+      date,
     };
 
-    setItems((prevItems) => [...prevItems, newItem]);
+    setEvents((prevEvents) => [...prevEvents, newEvent]);
     setName('');
+    setDate('');
   };
 
-  const updateItem = () => {
-    if (!name || !editingItem) return;
+  const updateEvent = () => {
+    if (!name || !date || !editingEvent) return;
 
-    setItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === editingItem.id ? { ...item, name } : item
+    setEvents((prevEvents) =>
+      prevEvents.map((event) =>
+        event.id === editingEvent.id ? { ...event, name, date } : event
       )
     );
 
-    setEditingItem(null);
+    setEditingEvent(null);
     setName('');
+    setDate('');
   };
 
-  const deleteItem = (id: string) => {
-    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  const deleteEvent = (id: string) => {
+    setEvents((prevEvents) => prevEvents.filter((event) => event.id !== id));
   };
 
-  const startEditing = (item: Item) => {
-    setEditingItem(item);
-    setName(item.name);
+  const startEditing = (event: Event) => {
+    setEditingEvent(event);
+    setName(event.name);
+    setDate(event.date);
   };
 
   const cancelEditing = () => {
-    setEditingItem(null);
+    setEditingEvent(null);
     setName('');
+    setDate('');
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>CRUD Genérico</Text>
+    <View style={globalStyles.container}>
+      <Text style={globalStyles.mainTitle}>Gerenciamento de Eventos</Text>
       <TextInput
-        style={styles.input}
-        placeholder="Nome"
+        style={globalStyles.input}
+        placeholder="Nome do Evento"
         value={name}
         onChangeText={setName}
       />
-      {editingItem ? (
-        <View style={styles.buttonContainer}>
-          <Button title="Atualizar" onPress={updateItem} />
+      <TextInput
+        style={globalStyles.input}
+        placeholder="Data do Evento"
+        value={date}
+        onChangeText={setDate}
+      />
+      {editingEvent ? (
+        <View style={globalStyles.buttonContainer}>
+          <Button title="Atualizar" onPress={updateEvent} />
           <Button title="Cancelar" onPress={cancelEditing} color="red" />
         </View>
       ) : (
-        <Button title="Adicionar" onPress={addItem} />
+        <Button title="Adicionar" onPress={addEvent} />
       )}
       <FlatList
-        data={items}
-        keyExtractor={(item) => item.id}
+        data={events}
+        keyExtractor={(event) => event.id}
         renderItem={({ item }) => (
-          <View style={styles.itemContainer}>
-            <Text style={styles.itemText}>{item.name}</Text>
-            <View style={styles.itemButtons}>
+          <View style={globalStyles.itemContainer}>
+            <Text style={globalStyles.itemText}>{item.name}</Text>
+            <Text style={globalStyles.itemText}>{item.date}</Text>
+            <View style={globalStyles.itemButtons}>
               <Button title="Editar" onPress={() => startEditing(item)} />
-              <Button title="Excluir" onPress={() => deleteItem(item.id)} color="red" />
+              <Button title="Excluir" onPress={() => deleteEvent(item.id)} color="red" />
             </View>
           </View>
         )}
@@ -83,47 +98,3 @@ export default function CrudScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  input: {
-    width: '100%',
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    marginBottom: 12,
-    paddingHorizontal: 10,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-    marginBottom: 12,
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    padding: 10,
-    borderBottomColor: '#ccc',
-    borderBottomWidth: 1,
-  },
-  itemText: {
-    fontSize: 18,
-  },
-  itemButtons: {
-    flexDirection: 'row',
-  },
-});
