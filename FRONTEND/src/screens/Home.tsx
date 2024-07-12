@@ -30,12 +30,10 @@ export default function Home() {
   };
 
   return (
-    <ScrollView contentContainerStyle={globalStyles.container}>
+    <ScrollView contentContainerStyle={globalStyles.scrollContainer}>
       <View style={globalStyles.header}>
         <Text style={globalStyles.headerText}>FÁBRICA DE EVENTOS</Text>
       </View>
-
-      <Text style={globalStyles.mainTitle}>DIVERSÃO, ALEGIA, E OUSADIA É SÓ NA FÁBRICA</Text>
       
       <Text style={globalStyles.subtitle}>
         Bem-vindo à Fábrica de Eventos, o seu portal para marcar eventos de consciência ambiental!
@@ -47,9 +45,7 @@ export default function Home() {
           Na Fábrica de Eventos, acreditamos que pequenas ações podem gerar grandes mudanças. Nosso objetivo é conectar pessoas e iniciativas que promovem a sustentabilidade e a preservação ambiental.
         </Text>
       </View>
-
       <View style={globalStyles.section}>
-        <Text style={globalStyles.sectionTitle}>O que Oferecemos</Text>
         <Text style={globalStyles.sectionText}>
           Nosso site permite que você marque e participe de eventos como:
         </Text>
