@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Text, TextInput, View, TouchableOpacity, Alert } from 'react-native';
+import { Text, TextInput, View, TouchableOpacity, Alert, StyleSheet, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import globalStyles from '../styles/styles';
 
 type RootStackParamList = {
   AuthenticatedTabs: undefined; 
@@ -43,27 +42,80 @@ export default function Login() {
   };
 
   return (
-    <View style={globalStyles.container}>
-      <Text style={globalStyles.mainTitle}>Login</Text>
-      <TextInput
-        style={globalStyles.input}
-        placeholder="Email"
-        placeholderTextColor="#ccc"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-      />
-      <TextInput
-        style={globalStyles.input}
-        placeholder="Senha"
-        placeholderTextColor="#ccc"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <TouchableOpacity style={globalStyles.button} onPress={handleLogin}>
-        <Text style={globalStyles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
+    <View style={styles.container}>
+      <View style={styles.loginBox}>
+        <Text style={styles.title}>Login</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#ccc"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Senha"
+          placeholderTextColor="#ccc"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Entrar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
+
+const { width } = Dimensions.get('window');
+const loginBoxWidth = width * 0.8;  // 80% da largura da tela
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F0FFF0',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  loginBox: {
+    width: loginBoxWidth,
+    padding: 20,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: '#8B4513',
+    borderTopWidth: 8,
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#2E8B57',
+    marginBottom: 20,
+  },
+  input: {
+    width: '50%',  // Ajusta a largura dos campos de entrada
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    marginBottom: 12,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+  },
+  button: {
+    backgroundColor: '#8B4513',
+    padding: 10,
+    marginVertical: 10,
+    borderRadius: 5,
+    width: '60%',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    textAlign: 'center',
+  },
+});
