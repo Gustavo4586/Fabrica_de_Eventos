@@ -14,6 +14,13 @@ export default StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
   },
+  scrollContainer: {
+    flexGrow: 1,
+    backgroundColor: background,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    padding: 20,
+  },
   header: {
     width: '100%',
     padding: 15,
@@ -70,6 +77,10 @@ export default StyleSheet.create({
     color: darkText,
     textAlign: 'left',
     marginVertical: 2,
+  },
+  buttonContainer: {
+    width: '100%',
+    alignItems: 'center',
   },
   button: {
     backgroundColor: woodBrown,

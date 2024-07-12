@@ -34,18 +34,19 @@ export default function Home() {
       <View style={globalStyles.header}>
         <Text style={globalStyles.headerText}>FÁBRICA DE EVENTOS</Text>
       </View>
-      
+    
       <Text style={globalStyles.subtitle}>
         Bem-vindo à Fábrica de Eventos, o seu portal para marcar eventos de consciência ambiental!
       </Text>
       
       <View style={globalStyles.section}>
-        <Text style={globalStyles.sectionTitle}>Nossa Missão</Text>
         <Text style={globalStyles.sectionText}>
           Na Fábrica de Eventos, acreditamos que pequenas ações podem gerar grandes mudanças. Nosso objetivo é conectar pessoas e iniciativas que promovem a sustentabilidade e a preservação ambiental.
         </Text>
       </View>
+
       <View style={globalStyles.section}>
+        <Text style={globalStyles.sectionTitle}>O que Oferecemos</Text>
         <Text style={globalStyles.sectionText}>
           Nosso site permite que você marque e participe de eventos como:
         </Text>
@@ -67,13 +68,15 @@ export default function Home() {
         <Text style={globalStyles.listItem}>• Fazer a diferença em sua comunidade</Text>
       </View>
 
-      <TouchableOpacity style={globalStyles.button} onPress={navigateToLogin}>
-        <Text style={globalStyles.buttonText}>Login</Text>
-      </TouchableOpacity>
-      
-      <TouchableOpacity style={globalStyles.button} onPress={navigateToCadastro}>
-        <Text style={globalStyles.buttonText}>Cadastro</Text>
-      </TouchableOpacity>
+      <View style={globalStyles.buttonContainer}>
+        <TouchableOpacity style={globalStyles.button} onPress={navigateToLogin}>
+          <Text style={globalStyles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={globalStyles.button} onPress={navigateToCadastro}>
+          <Text style={globalStyles.buttonText}>Cadastro</Text>
+        </TouchableOpacity>
+      </View>
 
       <TouchableOpacity style={globalStyles.scrollButton} onPress={scrollToTop}>
         <Text style={globalStyles.scrollButtonText}>Subir</Text>
